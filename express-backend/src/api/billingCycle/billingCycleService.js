@@ -1,6 +1,6 @@
 const billingCycle = require('./billingCycle');
 const errorHandler = require('../common/errorHandler');
-billingCycle.methods(['get', 'post', 'put', 'delete']);
+billingCycle.methods(['post', 'put', 'delete']);
 billingCycle.updateOptions({ new: true, runValidators: true });
 
 billingCycle
