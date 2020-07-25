@@ -1,8 +1,16 @@
 import '../common/templates/dependencies'
 import React from 'react';
+import Header from '../common/templates/Header';
+import Sidebar from '../common/templates/Sidebar';
+import Footer from '../common/templates/Footer';
 
 export default (props) => (
     <div className='wrapper'>
-        <h1>App</h1>
+        <Header />
+        <Sidebar />
+        <div className='content-wrapper'>
+            <h1>Content</h1>
+        </div>
+        <Footer />
     </div>
-)
+);
