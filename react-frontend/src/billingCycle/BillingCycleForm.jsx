@@ -4,11 +4,22 @@ import Input from '../common/form/Input';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { init } from './billingCycleActions';
-import CreditList from './creditList';
+import CreditList from './CreditList';
+import DebtList from './DebtList';
+import Summary from './Summary';
 
 class BillingCycleForm extends React.Component {
+    calculateSummary() {
+        console.log(this.props.credits);
+        return {
+            credit: (this.props.credits || [{value: 0}]).map((credit) => (credit.value || 0)).reduce((acc, cur) => acc + cur),
+            debt: (this.props.debts || [{value: 0}]).map((debt) => (debt.value || 0)).reduce((acc, cur) => acc + cur),
+        }
+    }
+
     render() {
         const { handleSubmit, credits, debts } = this.props
+        const summary = this.calculateSummary();
         return (
             <div>
                 <form role='form' onSubmit={handleSubmit}>
@@ -31,9 +42,15 @@ class BillingCycleForm extends React.Component {
                             label='Year'
                             cols='12 4'
                             placeholder='yyyy' />
+
+                        <Summary {...summary} />
+                        
                         <CreditList
                             cols='12 6'
                             credits={credits} />
+                        <DebtList 
+                            cols='12 6'
+                            debts={debts} />
                     </div>
                     <div className='box-footer'>
                         <button type="button" className='btn btn-default' onClick={this.props.init}>Back</button>
