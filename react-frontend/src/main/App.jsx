@@ -1,4 +1,3 @@
-import '../common/templates/dependencies'
 import React from 'react';
 import Header from '../common/templates/Header';
 import Sidebar from '../common/templates/Sidebar';
@@ -10,9 +9,11 @@ export default (props) => (
     <div className='wrapper'>
         <Header />
         <Sidebar />
+
         <div className='content-wrapper'>
             <Routes />
         </div>
+
         <Footer />
         <Messages />
     </div>

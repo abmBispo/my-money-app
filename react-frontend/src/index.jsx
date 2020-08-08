@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './main/App';
+import AuthOrApp from './main/AuthOrApp';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './main/reducers';
@@ -12,7 +12,7 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_
 const store = applyMiddleware(promise, multi, thunk)(createStore)(reducers, devTools);
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <AuthOrApp />
     </Provider>,
     document.getElementById('app')
 )
